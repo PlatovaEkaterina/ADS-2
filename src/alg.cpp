@@ -4,7 +4,7 @@ int countPairs1(int* arr, int len, int value) {
     int t = 0;
     for(int i = 0; i < len; i++) {
         for(int j = i + 1; j < len; j++) {
-            if (arr[i] + arr[j] == value) {
+            if(arr[i] + arr[j] == value) {
                 t++;
             }
         }
@@ -28,7 +28,7 @@ int countPairs2(int* arr, int len, int value) {
         t++;
         if(arr[right - 1] == arr[right]) {
             right = right - 1;
-        } else if (arr[left + 1] == arr[left]) {
+        } else if(arr[left + 1] == arr[left]) {
             left = left + 1;
         } else {
             left = left + 1;
@@ -44,7 +44,7 @@ int countPairs3(int *arr, int len, int value) {
     int right = len - 1;
     while (left < right - 1) {
         int middle = (left + right) / 2;
-        if (arr[middle] <= value)
+        if(arr[middle] <= value)
             left = middle;
         else
             right = middle;
@@ -54,20 +54,20 @@ int countPairs3(int *arr, int len, int value) {
         left = i + 1;
         right = len - 1;
         int c = 0;
-        while (left < right) {
+        while(left < right) {
             int m = (left + right) / 2;
-            if (arr[m] < (value-arr[i]))
+            if(arr[m] < (value-arr[i]))
                 left = m + 1;
             else
                 right = m;
         }
-        while (arr[left] == (value - arr[i])) {
+        while(arr[left] == (value - arr[i])) {
             c++;
             left++;
         }
     t += c;
     }
-    if (t) {
+    if(t) {
         return t;
     } else {
         return 0;
@@ -78,7 +78,7 @@ int main() {
     int value = 50;
     int *arr[5] = {20, 30, 30, 40, 40};
     int len = 5;
-    cout << countPairs1(arr, len, value) << '\n';
-    cout << countPairs2(arr, len, value) << '\n';
-    cout << countPairs3(arr, len, value) << '\n';
+    cout << countPairs1(arr, len, value);
+    cout << countPairs2(arr, len, value);
+    cout << countPairs3(arr, len, value);
 }
