@@ -1,10 +1,10 @@
 // Copyright 2021 NNTU-CS
 
-int countPairs1(int* arr, int len, int k) {
+int countPairs1(int* arr, int len, int value) {
     int t = 0;
     for(int i = 0; i < len; i++) {
         for(int j = i + 1; j < len; j++) {
-            if (arr[i] + arr[j] == k) {
+            if (arr[i] + arr[j] == value) {
                 t++;
             }
         }
@@ -12,19 +12,19 @@ int countPairs1(int* arr, int len, int k) {
     return t;
 }
 
-int countPairs2(int* arr, int len, int k) {
+int countPairs2(int* arr, int len, int value) {
     int t = 0;
     int left = 0;
     int right = len - 1;
     
     while(left != right) {
-      if(arr[left] + arr[right] > k) {
+      if(arr[left] + arr[right] > value) {
         right = right - 1;
       }
-      else if(arr[left] + arr[right] < k) {
+      else if(arr[left] + arr[right] < value) {
         left = left + 1;
       }
-      else if(arr[left] + arr[right] == k) {
+      else if(arr[left] + arr[right] == value) {
         t++;
         if(arr[right - 1] == arr[right]) {
             right = right - 1;
@@ -72,4 +72,13 @@ int countPairs3(int *arr, int len, int value) {
     } else {
         return 0;
     }
+}
+
+int main() {
+    int value = 50;
+    int *arr[5] = {20, 30, 30, 40, 40};
+    int len = 5;
+    cout << countPairs1(arr, len, value) << '\n';
+    cout << countPairs2(arr, len, value) << '\n';
+    cout << countPairs3(arr, len, value) << '\n';
 }
